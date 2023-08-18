@@ -30,8 +30,6 @@ class ViewController: UIViewController {
     //добавляем картинку
     let marioImage = UIImage(named: "mario")
     
-
-    
     //MARK: - ViewDidLoad method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +49,8 @@ class ViewController: UIViewController {
         enterButton.setTitleColor(.white, for: .normal)
         //Добавление действия и обработчика действия к кнопке "enterButton"
         enterButton.addTarget(self, action: #selector(didTapEnterButton), for: .touchUpInside)
-        
         //отключаем автоматическое добавление системных ограничений (constraits)
         enterButton.translatesAutoresizingMaskIntoConstraints = false
-        
         //установка constraits (ограничения)
         NSLayoutConstraint.activate([
             enterButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -80,8 +76,6 @@ class ViewController: UIViewController {
         view.addSubview(signInLabel)
         
         //-настройка emailLabel
-        //создаем frame для signUpLabel
-        //emailLabel.frame = emailLabel
         //создаем текст для signUpLabel
         emailLabel.text = "Email"
         //создаем размер шрифта и делаем шрифт жирнее
@@ -124,10 +118,8 @@ class ViewController: UIViewController {
         emailTextField.borderStyle = .roundedRect
         //надпись внутри поля
         emailTextField.placeholder = "enter your email"
-        
         //добавляю на view
         view.addSubview(emailTextField)
-        
         //установить contstrait
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: -9),
@@ -151,7 +143,6 @@ class ViewController: UIViewController {
         passwordTextField.placeholder = "enter your password"
         //метод, который позволяет смотреть пароль
         
-        
         //добавляю на view
         view.addSubview(passwordTextField)
         
@@ -162,31 +153,6 @@ class ViewController: UIViewController {
             passwordTextField.widthAnchor.constraint(equalToConstant: 300),
             passwordTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
-        
-        //MARK: - глаз на пароль
-     
-//        //добавляем картинку на view
-//        eyeImageView.image = openEyeImage
-//        //добавляем на view imageview
-//        view.addSubview(eyeImageView)
-//        //отключаю автоматические constrait
-//        eyeImageView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        //установить contstrait
-//        NSLayoutConstraint.activate([
-//            eyeImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            eyeImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -4)
-//        ])
-        
-//        centerY = superview.centerY, l
-//        eading = superview.leading - 4
-    
-        
-        
-        
-        
-        
-        
         
         
         //MARK: - Разместить логотип на первом экране
@@ -206,24 +172,20 @@ class ViewController: UIViewController {
         ])
         
     }
-        
-        //MARK: - обработчик нажатия на кнопку "enterButton"
-        //устанавливаем связь для перехода на следуюший view после нажатия на "enterButton"
     
+    //MARK: - обработчик нажатия на кнопку "enterButton"
+    //устанавливаем связь для перехода на следуюший view после нажатия на "enterButton"
+    @objc private func didTapEnterButton() {
+        let rootVC = SecondViewController()
+        let secondVC = UINavigationController(rootViewController: rootVC)
+        //метод, который отображает второй экран полностью(не как карту)
+        secondVC.modalPresentationStyle = .fullScreen
         
-        @objc private func didTapEnterButton() {
-            let rootVC = SecondViewController()
-            let secondVC = UINavigationController(rootViewController: rootVC)
-            //метод, который отображает второй экран полностью(не как карту)
-            secondVC.modalPresentationStyle = .fullScreen
-            
-            present(secondVC, animated: true)
-        }
-        
+        present(secondVC, animated: true)
     }
-    
-    //MARK: - создание второго SecondViewController
-    
+}
+
+//MARK: - создание второго SecondViewController
 class SecondViewController: UIViewController {
     
     //MARK: - Создаем константы для второго экрана
@@ -256,10 +218,9 @@ class SecondViewController: UIViewController {
         
         //делаем переход со 2 экрана на 1
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(goBack))
-        
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(goBack))
         //название кнопки входа
         checkButton.setTitle("Выставить счёт", for: .normal)
         //добавляем кнопку на view
@@ -287,8 +248,6 @@ class SecondViewController: UIViewController {
             checkButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-        
-        
         //MARK: - создание label & switch
         //создаем название кафе сверху
         //создаем текст для signUpLabel
@@ -301,8 +260,6 @@ class SecondViewController: UIViewController {
         cafeMarioLabel.sizeToFit()
         //добавляем на view
         view.addSubview(cafeMarioLabel)
-        
-        
         //отключаю автоматические constrait
         cafeMarioLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -314,10 +271,7 @@ class SecondViewController: UIViewController {
             cafeMarioLabel.heightAnchor.constraint(equalToConstant: 100)
         ])
         
-        
         //-настройка nameLabel
-        //создаем frame для nameLabel
-        //nameLabel.frame = nameLabel
         //создаем текст для nameLabel
         nameLabel.text = "ФИО"
         //создаем размер шрифта и делаем шрифт жирнее
@@ -345,7 +299,6 @@ class SecondViewController: UIViewController {
         //добавляем на view
         view.addSubview(guestLabel)
         
-        
         //настройка tableNumberLabel
         //создаем текст для tableNumberLabel
         tableNumberLabel.text = "Номер стола"
@@ -359,7 +312,6 @@ class SecondViewController: UIViewController {
         tableNumberLabel.sizeToFit()
         //добавляем на view
         view.addSubview(tableNumberLabel)
-        
         
         //настройка bookingLabel
         //создаем текст для bookingLabel
@@ -375,12 +327,10 @@ class SecondViewController: UIViewController {
         //добавляем на view
         view.addSubview(bookingLabel)
         
-        
         //добавляем switch
         bookingSwitch.frame = CGRect(x: 260, y: 505, width: 100, height: 50)
         //добавить на view
         view.addSubview(bookingSwitch)
-        
         
         //настройка prepaymentLabel
         //создаем текст для prepaymentLabel
@@ -396,13 +346,10 @@ class SecondViewController: UIViewController {
         //добавляем на view
         view.addSubview(prepaymentLabel)
         
-        
         //добавляем switch
         prepaymentSwitch.frame = CGRect(x: 260, y: 555, width: 100, height: 50)
         //добавить на view
         view.addSubview(prepaymentSwitch)
-        
-        
         
         //настройка vipLabel
         //создаем текст для vipLabel
@@ -417,7 +364,6 @@ class SecondViewController: UIViewController {
         vipLabel.sizeToFit()
         //добавляем на view
         view.addSubview(vipLabel)
-        
         
         //добавляем switch
         vipSwitch.frame = CGRect(x: 260, y: 605, width: 100, height: 50)
@@ -450,7 +396,6 @@ class SecondViewController: UIViewController {
             nameTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
         
-        
         //guestTextField для
         //вызов экземпляра класса
         guestTextField = UITextField()
@@ -474,7 +419,6 @@ class SecondViewController: UIViewController {
             guestTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
         
-        
         //tableNumberTextField для
         //вызов экземпляра класса
         tableNumberTextField = UITextField()
@@ -486,10 +430,8 @@ class SecondViewController: UIViewController {
         tableNumberTextField.borderStyle = .roundedRect
         //надпись внутри поля
         tableNumberTextField.placeholder = "Введите номер стола"
-        
         //добавляю на view
         view.addSubview(tableNumberTextField)
-        
         //установить contstrait
         NSLayoutConstraint.activate([
             tableNumberTextField.topAnchor.constraint(equalTo: tableNumberLabel.bottomAnchor, constant: 10),
@@ -497,10 +439,7 @@ class SecondViewController: UIViewController {
             tableNumberTextField.widthAnchor.constraint(equalToConstant: 300),
             tableNumberTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
-        
-        
     }
-    
     
     //MARK: - обработчик нажатия на кнопку "checkButton"
     //устанавливаем связь для перехода на следуюший view после нажатия на "checkButton"
@@ -535,16 +474,14 @@ class SecondViewController: UIViewController {
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-          alertController.addAction(UIAlertAction(title: "Выставить", style: .default, handler: { [weak self] _ in
-              self?.didTapCheckButtonForAlert()
-
+        alertController.addAction(UIAlertAction(title: "Выставить", style: .default, handler: { [weak self] _ in
+            self?.didTapCheckButtonForAlert()
+            
         }))
         present(alertController, animated: true)
     }
-            
-            
 }
-        
+
 //MARK: - создание третьего ThirdViewController
 
 class ThirdViewController: UIViewController {
@@ -556,7 +493,6 @@ class ThirdViewController: UIViewController {
     private let checkLabel = UILabel()
     private let nameLabel = UILabel()
     
-    
     //MARK: - ViewDidLoad method 3
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -566,11 +502,9 @@ class ThirdViewController: UIViewController {
         
         //делаем переход со 2 экрана на 1
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(goBack))
-        
-        
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(goBack))
         
         //название кнопки входа
         sumButton.setTitle("итого: ", for: .normal)
@@ -584,10 +518,8 @@ class ThirdViewController: UIViewController {
         sumButton.backgroundColor = .systemGreen
         //назначаем цвет текста
         sumButton.setTitleColor(.white, for: .normal)
-        
         //отключаем автоматическое добавление системных ограничений (constraits)
         sumButton.translatesAutoresizingMaskIntoConstraints = false
-        
         //установка constraits (ограничения)
         NSLayoutConstraint.activate([
             sumButton.centerXAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -150),
@@ -609,20 +541,14 @@ class ThirdViewController: UIViewController {
         checkLabel.sizeToFit()
         //добавляем на view
         view.addSubview(checkLabel)
-        
-        
         //отключаю автоматические constrait
         checkLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         //установить contstrait
         NSLayoutConstraint.activate([
             checkLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             checkLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
             checkLabel.heightAnchor.constraint(equalToConstant: 100)
         ])
-        
-        
-        
     }
     
     //MARK: - обработчик нажатия на кнопку "Back"
@@ -630,9 +556,8 @@ class ThirdViewController: UIViewController {
     @objc private func goBack() {
         dismiss(animated: true)
     }
-    
 }
 
-    
-    
+
+
 
